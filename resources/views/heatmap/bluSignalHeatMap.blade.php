@@ -73,7 +73,7 @@
     </div>
     <div class="map2-col">
         <div id="map2"></div>
-        <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">RSS</h2>
+        <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">蓝牙</h2>
         <button class="menu-btn" id="showWifi" onclick=showWifi()>WIFI</button>
         <button class="menu-btn" id="showBluetooth" onclick=showBluetooth()>蓝牙</button>
         <button class="menu-btn" id="showRSS" onclick=showRSS()>伪卫星</button>
