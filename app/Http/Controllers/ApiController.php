@@ -11,6 +11,7 @@ use App\Bluetooth;
 use App\Coo;
 use App\HeatMapData;
 use App\Obs;
+use App\RtCoo;
 use App\Sensor;
 use App\User;
 use App\Wifi;
@@ -291,6 +292,70 @@ class ApiController extends Controller
         "time":"125458751"
         }
      */
+    public function apiAddRtUserLocation()
+    {
+        $validator = Validator::make(rq(), [
+            'uid' => 'required',
+            'x' => '',
+            'y' => '',
+            'lng' => 'required',
+            'lat' => 'required',
+            'floor' => 'required|integer|min:1|max:100',
+            'orien' => ''
+        ]);
+
+        if ($validator->fails())
+            return err(1, $validator->messages());
+
+        $uid = rq('uid');
+        $x = rq('x');
+        $y = rq('y');
+        $lng = rq('lng');
+        $lat = rq('lat');
+        $floor = rq('floor');
+        $orien = rq('orien');
+
+        $users =RtCoo::where('uid',$uid)->first();
+        if ($users){
+//            更新
+            $users->x = $x;
+            $users->y = $y;
+            $users->lng = $lng;
+            $users->lat = $lat;
+            $users->floor = $floor;
+            $users->orien = $orien;
+            $users->save();
+
+    }else{
+            //插入
+            $users = new RtCoo();
+            $users->uid = $uid;
+            $users->x = $x;
+            $users->y = $y;
+            $users->lng = $lng;
+            $users->lat = $lat;
+            $users->floor = $floor;
+            $users->orien = $orien;
+            $users->save();
+
+        }
+        return suc();
+    }
+
+    /**
+     * 添加用户实时的位置信息 也就是终端用户实时位置上报
+     * URL：http://127.0.0.1/api/apiAddRtUserLocation
+    接口列表：{
+    "uid":"12541224512",
+    "x":"123.215", 可空
+    "y":"123.215", 可空
+    "lng":"123.215",
+    "lat":"123.215",
+    "floor":"2",
+    "orien":"123.215", 可空
+    "time":"125458751"
+    }
+     */
     public function apiAddUserLocation()
     {
         $validator = Validator::make(rq(), [
@@ -306,7 +371,7 @@ class ApiController extends Controller
         if ($validator->fails())
             return err(1, $validator->messages());
 
-        $userLocation = new Coo();
+        $userLocation = new RtCoo();
         $userLocation->uid = rq('uid');
         $userLocation->x = rq('x');
         $userLocation->y = rq('y');
@@ -352,8 +417,9 @@ class ApiController extends Controller
     public function apiGetAllUserNewLocationList()
     {
         $users = User::get();
+//        $users = RtCoo::get();
         foreach ($users as $user) {
-            $user_location =Coo::where('uid', $user->uid)->latest()->first();
+            $user_location =RtCoo::where('uid', $user->uid)->first();
             $user['location'] = $user_location;
         }
         return suc($users);

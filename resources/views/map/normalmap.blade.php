@@ -194,9 +194,9 @@
                         pointLayerF3.clear();
                         // 添加人
                         //注销掉因为先单用户测试
-                        // for (var i in dat.data) {
-                        for (var i=0; i<1; i++) {
-                            // console.log(dat.data[i].username);
+                        for (var i in dat.data) {
+                        // for (var i=0; i<1; i++) {
+                            console.log(dat.data[i]);
                             if (dat.data[i].location.floor==3){
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34871))
                                 {
