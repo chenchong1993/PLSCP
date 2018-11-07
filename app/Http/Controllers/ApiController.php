@@ -371,7 +371,7 @@ class ApiController extends Controller
         if ($validator->fails())
             return err(1, $validator->messages());
 
-        $userLocation = new RtCoo();
+        $userLocation = new Coo();
         $userLocation->uid = rq('uid');
         $userLocation->x = rq('x');
         $userLocation->y = rq('y');
