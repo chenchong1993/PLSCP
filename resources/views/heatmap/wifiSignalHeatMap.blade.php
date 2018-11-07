@@ -144,7 +144,7 @@
         /**
          * 从数据库获取热力图数据
          */
-        function getHeatMap(type,floor,point,map){
+        function getHeatMap(type,floor,point,map,max,min){
             /**
              * 调用获取热力图数据api接口
              */
@@ -181,8 +181,8 @@
                                 }
                             },
                             visualMap: {
-                                min: -80,
-                                max: -50,
+                                min: min,
+                                max: max,
                                 splitNumber: 5,
                                 show: false,
                                 inRange: {
@@ -234,7 +234,11 @@
             );
         }
         var pointF1 = [];
-        getHeatMap('wifi','1',pointF1,map1);
+        var pointF2 = [];
+        var pointF3 = [];
+        getHeatMap('wifi','1',pointF1,map1,-70,-80);
+        getHeatMap('wifi','2',pointF2,map2,-60,-88);
+        getHeatMap('wifi','3',pointF3,map3,-60,-75);
     });
 </script>
 
