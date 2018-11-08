@@ -82,6 +82,15 @@
         var endTime = $('#endTime').val();
         window.location.href = '/userTrail?uid=' + uid + '&startTime=' + startTime +'&endTime=' + endTime;
     }
+    function exportFlie(uid) {
+
+        console.log("2:",uid+" ");
+        var startTime = $('#startTime').val();
+        var endTime = $('#endTime').val();
+
+        window.location.href = '/api/fileExport?uid=' + uid + '&startTime=' + startTime +'&endTime=' + endTime;
+
+    }
     function showIndex() {
         window.location.href = '/index';
     }
@@ -164,6 +173,7 @@
                 + "<b>起始时间：</b><input type='text' name='startTime'class='' id='startTime' placeholder='2018-01-01 00:00:00'><br>"
                 + "<b>终止时间：</b><input type='text' name='endTime'class='' id='endTime' placeholder='2018-01-01 23:59:59'><br>"
                 + "<button class='' onclick=catUserTrail(" + "'" + uid + "'" + ") > 查看该用户轨迹</button>"
+                + "<button class='' onclick=exportFlie(" + "'" + uid + "'" + ") > 导出该时段数据</button>"
             );
             var picgr = new Graphic(picpoint, picSymbol, attr, infoTemplate);
             if (floor == 1){
@@ -194,14 +204,14 @@
                         pointLayerF3.clear();
                         // 添加人
                         //注销掉因为先单用户测试
-                        for (var i in dat.data) {
-                        // for (var i=0; i<1; i++) {
-                            console.log(dat.data[i]);
+                        // for (var i in dat.data) {
+                        for (var i=0; i<1; i++) {
+                            // console.log(dat.data[i]);
                             if (dat.data[i].location.floor==3){
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34871))
                                 {
-                                    console.log(dat.data[i].location.lng);
-                                    console.log(dat.data[i].location.lat);
+                                    // console.log(dat.data[i].location.lng);
+                                    // console.log(dat.data[i].location.lat);
                                     addUserPoint(
                                         dat.data[i].id,
                                         dat.data[i].uid,
@@ -216,8 +226,8 @@
                             } else {
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.349238))
                                 {
-                                    console.log(dat.data[i].location.lng);
-                                    console.log(dat.data[i].location.lat);
+                                    // console.log(dat.data[i].location.lng);
+                                    // console.log(dat.data[i].location.lat);
                                     addUserPoint(
                                         dat.data[i].id,
                                         dat.data[i].uid,

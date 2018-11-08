@@ -15,9 +15,11 @@ use App\RtCoo;
 use App\Sensor;
 use App\User;
 use App\Wifi;
+use Couchbase\UserSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+//use Maatwebsite\Excel\Excel;
+use Excel;
 use function PHPSTORM_META\type;
 
 
@@ -550,4 +552,42 @@ class ApiController extends Controller
         var_dump($dataobj);
 
 }
+
+/**
+ * 保存文件,csv格式
+ */
+    public function fileExport(){
+        ini_set('memory_limit','500M');
+        set_time_limit(0);//设置超时限制为0分钟
+//        $cellData = User::select('uid','uid','uid')->limit(5)->get()->toArray();
+
+        $uid = rq('uid');
+        $startTime = rq('startTime');//"2018-10-22 11:36:07";//rq('startTime');
+        $endTime = rq('endTime');//"2018-10-22 11:38:19";//rq('endTime');
+        if ($startTime== '' or $endTime == ''){
+            return '输入时间段为空';
+        }
+        $userPositionList = Coo::where('uid' ,'=', $uid)->where('created_at', '>=', $startTime)->where('created_at', '<=', $endTime)->get();
+        if ($userPositionList->isEmpty()){
+            return '输入有误或该时间段内没有数据';
+        }
+        $userPositionList->toArray();
+        $cellData[0] = array('参与评估方简称','用户识别码','时间','楼层','X','Y','Z');
+        for($i=1;$i<count($userPositionList);$i++){
+            $cellData[$i][0] = 'BLH';
+            $cellData[$i][1] = $userPositionList[$i]->uid;
+            $cellData[$i][2] = $userPositionList[$i]->created_at;
+            $cellData[$i][3] = $userPositionList[$i]->floor;
+            $cellData[$i][4] = $userPositionList[$i]->lat;
+            $cellData[$i][5] = $userPositionList[$i]->lng;
+            $cellData[$i][6] = '0';
+        }
+        Excel::create('位置信息',function($excel) use ($cellData){
+            $excel->sheet('location', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('csv');
+        die;
+
+    }
 }

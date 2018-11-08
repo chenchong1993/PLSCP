@@ -114,7 +114,7 @@
                                 <a href="{{ url('poiMap')}}">兴趣点图</a>
                             </li>
                             <li>
-                                <a href="{{ url('')}}">室内导航</a>
+                                <a href="{{ url('index')}}">室内导航</a>
                             </li>
                         </ul>
                     </li>

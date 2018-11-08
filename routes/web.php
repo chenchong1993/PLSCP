@@ -53,7 +53,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('routeMap','PageController@routeMap'); //路网图
     Route::any('heatMap','PageController@heatMap'); //热力图
     Route::any('userTrail/','PageController@userTrail');
-    Route::any('userTrail1/','PageController@userTrail1');
+//    Route::any('userTrail1/','PageController@userTrail1');
     //普通查询
     Route::any('nameSearch','PageController@nameSearch'); //名称查询
     Route::any('extentSearch','PageController@extentSearch'); //扩展查询
@@ -84,6 +84,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('apiAddBluetooth', 'ApiController@apiAddBluetooth');//获取蓝牙观测数据
         Route::post('apiAddSensor', 'ApiController@apiAddSensor');//获取传感器观测数据
         Route::any('heatMapData', 'ApiController@heatMapData');//读热力图数据
+        Route::any('fileExport/','ApiController@fileExport'); //Excel导出
 
 });
 });
