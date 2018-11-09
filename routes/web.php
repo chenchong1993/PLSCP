@@ -78,11 +78,11 @@ Route::group(['middleware' => 'web'], function () {
         Route::any('apiUserUpdate/{uid}','ApiController@apiUserUpdate'); //修改用户资料
         Route::post('apiGetUid', 'ApiController@apiGetUid');//为终端获取用户UID
         Route::post('apiAddUserLocation', 'ApiController@apiAddUserLocation');//终端上传用户坐标
-        Route::post('apiAddRtUserLocation', 'ApiController@apiAddRtUserLocation');//终端实时上传用户坐标
+        Route::post('apiAddRtUserLocation', 'ApiController@apiAddRtUserLocation');//终端实时上传用户坐标  暂停使用
         Route::get('apiGetAllUserNewLocationList', 'ApiController@apiGetAllUserNewLocationList');//从数据库中获取用户位置信息
-        Route::post('apiAddWifi', 'ApiController@apiAddWifi');//获取wifi观测数据
-        Route::post('apiAddBluetooth', 'ApiController@apiAddBluetooth');//获取蓝牙观测数据
-        Route::post('apiAddSensor', 'ApiController@apiAddSensor');//获取传感器观测数据
+        Route::post('apiAddObs', 'ApiController@apiAddObs');//获取观测数据
+        Route::post('apiAddBluetooth', 'ApiController@apiAddBluetooth');//获取蓝牙观测数据 暂停使用
+        Route::post('apiAddSensor', 'ApiController@apiAddSensor');//获取传感器观测数据  暂停使用
         Route::any('heatMapData', 'ApiController@heatMapData');//读热力图数据
         Route::any('fileExport/','ApiController@fileExport'); //Excel导出
 

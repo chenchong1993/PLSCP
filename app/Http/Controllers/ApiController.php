@@ -294,7 +294,7 @@ class ApiController extends Controller
         "time":"125458751"
         }
      */
-    public function apiAddRtUserLocation()
+    public function apiAddUserLocation()
     {
         $validator = Validator::make(rq(), [
             'uid' => 'required',
@@ -328,7 +328,8 @@ class ApiController extends Controller
             $users->orien = $orien;
             $users->save();
 
-    }else{
+    }
+    else{
             //插入
             $users = new RtCoo();
             $users->uid = $uid;
@@ -341,6 +342,16 @@ class ApiController extends Controller
             $users->save();
 
         }
+
+        $userLocation = new Coo();
+        $userLocation->uid = $uid;
+        $userLocation->x = $x;
+        $userLocation->y = $y;
+        $userLocation->lng = $lng;
+        $userLocation->lat = $lat;
+        $userLocation->floor = $floor;
+        $userLocation->orien = $orien;
+        $userLocation->save();
         return suc();
     }
 
@@ -357,7 +368,7 @@ class ApiController extends Controller
     "orien":"123.215", 可空
     "time":"125458751"
     }
-     */
+
     public function apiAddUserLocation()
     {
         $validator = Validator::make(rq(), [
@@ -386,6 +397,7 @@ class ApiController extends Controller
         return suc();
 
     }
+    */
 
     /**
      * 终端根据用户名获取UID接口
@@ -430,28 +442,71 @@ class ApiController extends Controller
     /**
      * wifi观测数据上传接口
      */
-    public function apiAddWifi()
+    public function apiAddObs()
     {
         $validator = Validator::make(rq(), [
             'uid' => 'required',
             'lng' => 'required',
             'lat' => 'required',
+            'x' => '',
+            'y' => '',
             'floor' => 'required',
             'orien' => 'required',
-            'wifi' => 'required',
+            'wifi' => '',
+            'bluetooth'=>'',
+            'sensor'=>''
         ]);
 
         if ($validator->fails())
             return err(1, $validator->messages());
 
-        $obs = new Wifi();
-        $obs->uid=rq('uid');
-        $obs->lng=rq('lng');
-        $obs->lat=rq('lat');
-        $obs->floor=rq('floor');
-        $obs->orien=rq('orien');
-        $obs->wifi=rq('wifi');
-        $obs->save();
+        $uid=rq('uid');
+        $lng=rq('lng');
+        $lat=rq('lat');
+        $x = rq('x');
+        $y = rq('y');
+        $floor=rq('floor');
+        $orien=rq('orien');
+        $wifi=rq('wifi');
+        $blue_tooth=rq('bluetooth');
+        $sensor=rq('sensor');
+
+        $wifiData = new Wifi();
+        $bluData = new  Bluetooth();
+        $sensorData = new Sensor();
+//wifi表上传
+        $wifiData->uid=$uid;
+        $wifiData->lng=$lng;
+        $wifiData->lat=$lat;
+        $wifiData->x=$x;
+        $wifiData->y=$y;
+        $wifiData->floor=$floor;
+        $wifiData->orien=$orien;
+        $wifiData->wifi = $wifi;
+//蓝牙表上传
+        $bluData->uid=$uid;
+        $bluData->lng=$lng;
+        $bluData->lat=$lat;
+        $bluData->x=$x;
+        $bluData->y=$y;
+        $bluData->floor=$floor;
+        $bluData->orien=$orien;
+        $bluData->blue_tooth = $blue_tooth;
+
+//传感器表上传
+
+        $sensorData->uid=$uid;
+        $sensorData->lng=$lng;
+        $sensorData->lat=$lat;
+        $sensorData->x=$x;
+        $sensorData->y=$y;
+        $sensorData->floor=$floor;
+        $sensorData->orien=$orien;
+        $sensorData->sensor = $sensor;
+
+        $wifiData->save();
+        $bluData->save();
+        $sensorData->save();
         return suc();
 
     }
@@ -479,7 +534,6 @@ class ApiController extends Controller
         $obs->lat=rq('lat');
         $obs->floor=rq('floor');
         $obs->orien=rq('orien');
-        $obs->blue_tooth=rq('bluetooth');
         $obs->save();
         return suc();
 
@@ -508,24 +562,11 @@ class ApiController extends Controller
         $obs->lat=rq('lat');
         $obs->floor=rq('floor');
         $obs->orien=rq('orien');
-        $obs->sensor=rq('sensor');
         $obs->save();
         return suc();
 
     }
-    /**
-     * 分存数据
-     */
-    public function apiSensor()
-    {
-        $obs = Obs::all();
 
-//        dump($obs);
-        $data = $obs[0]->sensor;
-//        $json_data = json_decode($data);
-//        dd($json_data);
-        return $data;
-    }
 
     /**
      * 读热力图数据
