@@ -302,7 +302,7 @@ class ApiController extends Controller
             'y' => '',
             'lng' => 'required',
             'lat' => 'required',
-            'floor' => 'required|integer|min:1|max:100',
+            'floor' => 'required',
             'orien' => ''
         ]);
 
