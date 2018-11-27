@@ -30,13 +30,7 @@ class ApiController extends Controller
      */
     public function apiTest()
     {
-        $validator = Validator::make(rq(), [
-            'key' => 'required',
-        ]);
-
-        if ($validator->fails())
-            return err(1, $validator->messages());
-        return 'true';
+        return 0;
 
     }
 
@@ -178,58 +172,6 @@ class ApiController extends Controller
     }
 
     /**
-     * 封装json格式的POST请求
-     */
-    public function apiPostJson($url,$data)
-    {
-        header("Content-type:application/json;charset=utf-8");
-        //这里需要注意的是这里php会自动对json进行编码，而一些java接口不自动解码情况（中文）
-        $json_data = json_encode($data,JSON_UNESCAPED_UNICODE);
-//$json_data = json_encode($data);
-//curl方式发送请求
-        $ch = curl_init();
-//设置请求为post
-        curl_setopt($ch, CURLOPT_POST, 1);
-//请求地址
-        curl_setopt($ch, CURLOPT_URL, $url);
-//json的数据
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//显示请求头
-        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-//请求头定义为json数据
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type:application/json;charset=utf-8',
-                'Content-Length: '.strlen($json_data)
-            )
-        );
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return $response;
-    }
-
-    /**
-     * 封装get请求
-     */
-    public function apiGetJson($url)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        //如果$data不为空,则为POST请求
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-        $error = curl_error($ch);
-        curl_close($ch);
-        if ($error){
-            throw new Exception('请求发生错误：' . $error);
-        }
-        $resultArr = json_decode($output, true);//将json转为数组格式数据
-        return $resultArr;
-    }
-
-    /**
      * 修改用户资料接口 没用上
      */
     public function apiUserUpdate(Request $request,$uid)
@@ -282,17 +224,8 @@ class ApiController extends Controller
 
     /**
      * 添加用户的位置信息 也就是终端用户实时位置上报
-     * URL：http://127.0.0.1/api/apiAddUserLocation
-        接口列表：{
-        "uid":"12541224512",
-        "x":"123.215", 可空
-        "y":"123.215", 可空
-        "lng":"123.215",
-        "lat":"123.215",
-        "floor":"2",
-        "orien":"123.215", 可空
-        "time":"125458751"
-        }
+     * 1.添加到位置数据库
+     * 2.添加或者更新实时位置数据库
      */
     public function apiAddUserLocation()
     {
@@ -356,53 +289,7 @@ class ApiController extends Controller
     }
 
     /**
-     * 添加用户实时的位置信息 也就是终端用户实时位置上报
-     * URL：http://127.0.0.1/api/apiAddRtUserLocation
-    接口列表：{
-    "uid":"12541224512",
-    "x":"123.215", 可空
-    "y":"123.215", 可空
-    "lng":"123.215",
-    "lat":"123.215",
-    "floor":"2",
-    "orien":"123.215", 可空
-    "time":"125458751"
-    }
-
-    public function apiAddUserLocation()
-    {
-        $validator = Validator::make(rq(), [
-            'uid' => 'required',
-            'x' => '',
-            'y' => '',
-            'lng' => 'required',
-            'lat' => 'required',
-            'floor' => 'required|integer|min:1|max:100',
-            'orien' => ''
-        ]);
-
-        if ($validator->fails())
-            return err(1, $validator->messages());
-
-        $userLocation = new Coo();
-        $userLocation->uid = rq('uid');
-        $userLocation->x = rq('x');
-        $userLocation->y = rq('y');
-        $userLocation->lng = rq('lng');
-        $userLocation->lat = rq('lat');
-        $userLocation->floor = rq('floor');
-        $userLocation->orien = rq('orien');
-        $userLocation->save();
-
-        return suc();
-
-    }
-    */
-
-    /**
      * 终端根据用户名获取UID接口
-     * 接口访问链接http://plscp.free.idcfengye.com/api/apiGetUid
-     * 参数列表 {"username":"adminxiaosong"}
      */
     public function apiGetUid()
     {
@@ -440,7 +327,8 @@ class ApiController extends Controller
     }
 
     /**
-     * wifi观测数据上传接口
+     * 观测数据上传接口
+     * 上传wifi,蓝牙，传感器，分别存储到不同的表里
      */
     public function apiAddObs()
     {
@@ -512,91 +400,9 @@ class ApiController extends Controller
     }
 
     /**
-     * 蓝牙观测数据上传接口
+     * 保存文件,csv格式
+     * 检索一段时间内的位置数据并导出为文件
      */
-    public function apiAddBluetooth()
-    {
-        $validator = Validator::make(rq(), [
-            'uid' => 'required',
-            'lng' => 'required',
-            'lat' => 'required',
-            'floor' => 'required',
-            'orien' => 'required',
-            'bluetooth'=>'required',
-        ]);
-
-        if ($validator->fails())
-            return err(1, $validator->messages());
-
-        $obs = new Bluetooth();
-        $obs->uid=rq('uid');
-        $obs->lng=rq('lng');
-        $obs->lat=rq('lat');
-        $obs->floor=rq('floor');
-        $obs->orien=rq('orien');
-        $obs->save();
-        return suc();
-
-    }
-
-    /**
-     * 传感器观测数据上传接口
-     */
-    public function apiAddSensor()
-    {
-        $validator = Validator::make(rq(), [
-            'uid' => 'required',
-            'lng' => 'required',
-            'lat' => 'required',
-            'floor' => 'required',
-            'orien' => 'required',
-            'sensor'=>'required'
-        ]);
-
-        if ($validator->fails())
-            return err(1, $validator->messages());
-
-        $obs = new Sensor();
-        $obs->uid=rq('uid');
-        $obs->lng=rq('lng');
-        $obs->lat=rq('lat');
-        $obs->floor=rq('floor');
-        $obs->orien=rq('orien');
-        $obs->save();
-        return suc();
-
-    }
-
-
-    /**
-     * 读热力图数据
-     */
-    public function heatMapData(){
-
-        $validator = Validator::make(rq(), [
-            'type' => 'required',
-            'floor'=>'required'
-        ]);
-
-        if ($validator->fails())
-            return err(1, $validator->messages());
-
-        $type = rq('type');
-        $floor = rq('floor');
-        $heatMapData = HeatMapData::where("type" ,'=', $type)->where("floor" ,'=', $floor)->get();
-//        $data = json_decode($heatMapData[0]->data, true);
-        $data = $heatMapData[0]->data;
-        $dataobj = json_decode($data);
-
-//        return $dataobj;
-        return $data;
-        var_dump($dataobj);
-
-}
-
-/**
- * 保存文件,csv格式
- */
     public function fileExport(){
         ini_set('memory_limit','500M');
         set_time_limit(0);//设置超时限制为0分钟

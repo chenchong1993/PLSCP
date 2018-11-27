@@ -114,7 +114,7 @@
                                 <a href="{{ url('poiMap')}}">兴趣点图</a>
                             </li>
                             <li>
-                                <a href="{{ url('index')}}">室内导航</a>
+                                <a href="http://121.28.103.199:5561/iserver/iClient/for3D/webgl/zh/examples/S3M_331.html">三维地图浏览</a>
                             </li>
                         </ul>
                     </li>
@@ -125,7 +125,7 @@
                                 <a href="{{ url('wifiSignalHeatMap')}}">信号强度热力图</a>
                             </li>
                             <li>
-                                <a href="{{ url('heatMap')}}">定位精度热力图</a>
+                                <a href="{{ url('peopleIn331')}}">人口分布热力图</a>
                             </li>
                             <li>
                                 <a href="{{ url('hdopHeatMap')}}">精度因子热力图</a>

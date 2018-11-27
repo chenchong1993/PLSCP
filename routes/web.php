@@ -53,7 +53,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('routeMap','PageController@routeMap'); //路网图
     Route::any('heatMap','PageController@heatMap'); //热力图
     Route::any('userTrail/','PageController@userTrail');
-//    Route::any('userTrail1/','PageController@userTrail1');
     //普通查询
     Route::any('nameSearch','PageController@nameSearch'); //名称查询
     Route::any('extentSearch','PageController@extentSearch'); //扩展查询
@@ -68,6 +67,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('pdopHeatMap','PageController@pdopHeatMap'); //pdop热力图
     Route::any('gdopHeatMap','PageController@gdopHeatMap'); //gdop热力图
     Route::any('rssHeatMap','PageController@rssHeatMap'); //rss热力图
+    Route::any('peopleHeatMap','PageController@peopleHeatMap'); //桥西区人口分布热力图
+    Route::any('peopleIn331','PageController@peopleIn331'); //331人口分布热力图
 
 
     Route::group(['prefix' => 'api'], function () {
@@ -78,11 +79,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::any('apiUserUpdate/{uid}','ApiController@apiUserUpdate'); //修改用户资料
         Route::post('apiGetUid', 'ApiController@apiGetUid');//为终端获取用户UID
         Route::post('apiAddUserLocation', 'ApiController@apiAddUserLocation');//终端上传用户坐标
-        Route::post('apiAddRtUserLocation', 'ApiController@apiAddRtUserLocation');//终端实时上传用户坐标  暂停使用
         Route::get('apiGetAllUserNewLocationList', 'ApiController@apiGetAllUserNewLocationList');//从数据库中获取用户位置信息
         Route::post('apiAddObs', 'ApiController@apiAddObs');//获取观测数据
-        Route::post('apiAddBluetooth', 'ApiController@apiAddBluetooth');//获取蓝牙观测数据 暂停使用
-        Route::post('apiAddSensor', 'ApiController@apiAddSensor');//获取传感器观测数据  暂停使用
         Route::any('heatMapData', 'ApiController@heatMapData');//读热力图数据
         Route::any('fileExport/','ApiController@fileExport'); //Excel导出
 

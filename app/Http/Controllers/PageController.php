@@ -162,6 +162,21 @@ class PageController extends Controller
     }
 
     /**
+     * 人口分布热力图
+     */
+    public function peopleHeatMap()
+    {
+        return view('heatmap.peopleHeatMap');
+    }
+    /**
+     * 331人口分布热力图
+     */
+    public function peopleIn331()
+    {
+        return view('heatmap.peopleIn331');
+    }
+
+    /**
      * wifi信号强度热力图
      */
     public function wifiSignalHeatMap()

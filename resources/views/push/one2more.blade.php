@@ -125,7 +125,7 @@
          * @param message
          * @returns {boolean}
          */
-        function sendmsg(conn,push_user_id,message) {
+        function sendmsg0(conn,push_user_id,message) {
             if (!conn) {
                 return false;
             }
@@ -142,6 +142,45 @@
             return false
 
         }
+
+        /**
+         * 发送消息，给十个用户发
+         * @param push_user_id
+         * @param message
+         * @returns {boolean}
+         */
+        function sendmsg(conn,push_user_id,message) {
+            if (!conn) {
+                return false;
+            }
+            var msgJson = '"{\\"Type\\":2,\\"Data\\":{\\"from\\":29914377884794889,\\"to\\":29914377884794889,\\"content\\":\\"{\\\\\\"_id\\\\\\":3,\\\\\\"content\\\\\\":{\\\\\\"_id\\\\\\":3,\\\\\\"contentType\\\\\\":3,\\\\\\"fileName\\\\\\":null,\\\\\\"json\\\\\\":\\\\\\"'+message+'\\\\\\"},\\\\\\"contentType\\\\\\":3,\\\\\\"conversationId\\\\\\":\\\\\\"1536888885424\\\\\\",\\\\\\"conversationType\\\\\\":1,\\\\\\"createTime\\\\\\":1536888940315,\\\\\\"direct\\\\\\":2,\\\\\\"fileurl\\\\\\":null,\\\\\\"fromUserId\\\\\\":31783766124920837,\\\\\\"isImportance\\\\\\":false,\\\\\\"lat\\\\\\":0.0,\\\\\\"lon\\\\\\":0.0,\\\\\\"msgId\\\\\\":0,\\\\\\"serverMessageId\\\\\\":null,\\\\\\"status\\\\\\":0,\\\\\\"targetIDs\\\\\\":\\\\\\"29914377884794889\\\\\\"}\\",\\"tag\\":\\"1\\",\\"timestamp\\":1536888940}}"';
+
+            var sengMsg1 = '{"type":1,"to":32770901179105290,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg1);
+            var sengMsg2 = '{"type":1,"to":32770916358291466,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg2);
+            var sengMsg3 = '{"type":1,"to":32770925313130506,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg3);
+            var sengMsg4 = '{"type":1,"to":32770935140384778,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg4);
+            var sengMsg5 = '{"type":1,"to":32770970116685834,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg5);
+            var sengMsg6 = '{"type":1,"to":32770981789433866,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg6);
+            var sengMsg7 = '{"type":1,"to":32770988571623434,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg7);
+            var sengMsg8 = '{"type":1,"to":32771004749053962,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg8);
+            var sengMsg9 = '{"type":1,"to":32771017176776714,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg9);
+            var sengMsg10 = '{"type":1,"to":32771028388151306,"text":'+msgJson+',"appid":10,"time":1508898308,"platform":1}';
+            conn.send(sengMsg10);
+
+            // notify("发送成功","opt_ok");
+            return true;
+
+        }
+
         /**
          * 处理API接收消息模板
          * @param data
