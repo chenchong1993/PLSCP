@@ -400,6 +400,32 @@ class ApiController extends Controller
     }
 
     /**
+     * 读热力图数据
+     */
+    public function heatMapData(){
+
+        $validator = Validator::make(rq(), [
+            'type' => 'required',
+            'floor'=>'required'
+        ]);
+
+        if ($validator->fails())
+            return err(1, $validator->messages());
+
+        $type = rq('type');
+        $floor = rq('floor');
+        $heatMapData = HeatMapData::where("type" ,'=', $type)->where("floor" ,'=', $floor)->get();
+//        $data = json_decode($heatMapData[0]->data, true);
+        $data = $heatMapData[0]->data;
+        $dataobj = json_decode($data);
+
+//        return $dataobj;
+        return $data;
+        var_dump($dataobj);
+
+    }
+
+    /**
      * 保存文件,csv格式
      * 检索一段时间内的位置数据并导出为文件
      */
