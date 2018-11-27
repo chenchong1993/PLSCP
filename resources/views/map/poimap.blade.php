@@ -44,7 +44,7 @@
             //定义点的图片符号
             var picSymbol = new PictureMarkerSymbol("{{ asset('static/Ips_api_javascript/Ips/image/marker.png') }}",24,24);
             //定义点的图片符号
-            var attr = {"name":"1号标注点","time":"2018-08-01"};
+            var attr = {"name":"用户兴趣点","time":"2018-08-01"};
             //信息模板
             var infoTemplate = new InfoTemplate();
             infoTemplate.setTitle("标注点");
@@ -70,6 +70,7 @@
 
         });
     </script>
+
     <div class="row">
         <div class="map-col">
             <div id="map"></div>

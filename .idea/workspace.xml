@@ -33,12 +33,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="1641" />
+          <entry key="php" value="1676" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="481" />
+          <entry key="Blade" value="516" />
           <entry key="PHP" value="1160" />
         </counts>
       </usages-collector>
@@ -47,7 +47,7 @@
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="23" />
+          <entry key="Blade" value="26" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
           <entry key="PHP" value="22" />
@@ -65,22 +65,13 @@
         <counts>
           <entry key="html" value="1" />
           <entry key="json" value="2" />
-          <entry key="php" value="45" />
+          <entry key="php" value="48" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="83" column="31" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/map/normalmap.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,13 +84,53 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/map/userTrail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
               <caret line="63" column="81" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
               <folding>
                 <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/map/routemap.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1482" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/map/poimap.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-334">
+              <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/heatmap/peopleIn331.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="91" selection-start-line="91" selection-end-line="475" selection-end-column="9" />
+              <folding>
+                <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#3831#3885#0#HTML" />
+                <element signature="e#3909#3965#0#HTML" />
+                <element signature="e#3991#4039#0#HTML" />
+                <element signature="e#4044#4069#0#HTML" />
+                <element signature="e#4082#4246#0#HTML" />
+                <element signature="e#4393#4472#0#HTML" />
+                <element signature="e#4510#4589#0#HTML" />
+                <element signature="e#4627#4707#0#HTML" />
+                <element signature="e#5280#8136#0#HTML" />
+                <element signature="e#8159#13770#0#HTML" />
+                <element signature="e#13794#19420#0#HTML" />
+                <element signature="e#19444#22253#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -203,6 +234,7 @@
         <option value="$PROJECT_DIR$/resources/views/heatmap/peopleHeatMap.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/map/normalmap.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/map/userTrail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/map/poimap.blade.php" />
       </list>
     </option>
   </component>
@@ -446,12 +478,12 @@
       <workItem from="1543284616299" duration="185000" />
       <workItem from="1543285418898" duration="4846000" />
       <workItem from="1543301701529" duration="890000" />
-      <workItem from="1543303847637" duration="3126000" />
+      <workItem from="1543303847637" duration="4189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53896000" />
+    <option name="totallyTimeSpent" value="54959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -520,9 +552,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/map/poimap.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Sensor.php">
@@ -632,13 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/heatmap/peopleIn331.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/heatmap/peopleHeatMap.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -673,6 +695,40 @@
           <folding>
             <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/heatmap/peopleIn331.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="91" selection-start-line="91" selection-end-line="475" selection-end-column="9" />
+          <folding>
+            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#3831#3885#0#HTML" />
+            <element signature="e#3909#3965#0#HTML" />
+            <element signature="e#3991#4039#0#HTML" />
+            <element signature="e#4044#4069#0#HTML" />
+            <element signature="e#4082#4246#0#HTML" />
+            <element signature="e#4393#4472#0#HTML" />
+            <element signature="e#4510#4589#0#HTML" />
+            <element signature="e#4627#4707#0#HTML" />
+            <element signature="e#5280#8136#0#HTML" />
+            <element signature="e#8159#13770#0#HTML" />
+            <element signature="e#13794#19420#0#HTML" />
+            <element signature="e#19444#22253#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/map/routemap.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1482" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/map/poimap.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-334">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
         </state>
       </provider>
     </entry>
