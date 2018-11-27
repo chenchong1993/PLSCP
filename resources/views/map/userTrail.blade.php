@@ -58,6 +58,7 @@
     </div>
     <div class="map2-col">
         <div id="map2"></div>
+        <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">用户轨迹</h2>
         <button  class="menu-btn" id="showbigger">放大点</button>
         <button  class="menu-btn" id="showsmaller">缩小点</button>
         <button class="menu-btn" id="showIndex" onclick=showIndex()>返回首页</button>

@@ -44,7 +44,7 @@
 {{--/*定义放大缩小按钮风格*/--}}
 <style>
     .menu-btn {
-        position: fixed;top:30px;left:1140px;font-size: 18px;
+        position: fixed;top:30px;left:1050px;font-size: 18px;
     }
     #show331{
         top:30px;
