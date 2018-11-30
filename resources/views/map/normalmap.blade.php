@@ -41,9 +41,12 @@
 <body>
 <style>
     .menu-btn {
-        position: fixed;top:30px;left:1140px;font-size: 18px;
+        position: fixed;top:30px;left:1050px;font-size: 18px;
     }
     #showIndex{
+        top:70px;
+    }
+    #showC7{
         top:30px;
     }
 </style>
@@ -61,7 +64,8 @@
     </div>
     <div class="map2-col">
         <div id="map2"></div>
-        <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">用户位置分布</h2>
+        <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">331用户位置分布</h2>
+            <button class="menu-btn" id="showC7" onclick=showC7()>查看C7用户分布</button>
         <button class="menu-btn" id="showIndex" onclick=showIndex()>返回首页</button>
     </div>
     <div class="map3-col">
@@ -91,6 +95,9 @@
 
         window.location.href = '/api/fileExport?uid=' + uid + '&startTime=' + startTime +'&endTime=' + endTime;
 
+    }
+    function showC7() {
+        window.location.href = '/normalMapC7';
     }
     function showIndex() {
         window.location.href = '/index';
@@ -159,10 +166,26 @@
             var picpoint = new Point(lng,lat);
             // //定义点的图片符号
             var picSymbol;
-            if (status == 'normal')
-                picSymbol = new PictureMarkerSymbol("{{ asset('static/Ips_api_javascript/Ips/image/marker.png') }}",POINTSIZE,POINTSIZE);
-            else if (status == 'danger')
-                picSymbol = new PictureMarkerSymbol("{{ asset('static/Ips_api_javascript/Ips/image/marker.png') }}",24,24);
+            var img_uri;
+            switch (status) {
+                case 5:
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker0.png') }}";
+                    break;
+                case 6:
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker1.png') }}";
+                    break;
+                case 7:
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker2.png') }}";
+                    break;
+                case 8:
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker3.png') }}";
+                    break;
+                case 9:
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker4.png') }}";
+                    break;
+            }
+
+            picSymbol = new PictureMarkerSymbol(img_uri,24,24);
             //定义点的图片符号
             var attr = {"name": name, "phone": phone};
             //信息模板
@@ -205,8 +228,9 @@
                         pointLayerF3.clear();
                         // 添加人
                         //注销掉因为先单用户测试
-                        for (var i in dat.data) {
-                        // for (var i=0; i<1; i++) {
+                        // for (var i in dat.data) {
+                        console.log(dat);
+                        for (var i=5; i<10; i++) {
                             // console.log(dat.data[i]);
                             if (dat.data[i].location.floor==3){
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34871))
@@ -221,7 +245,7 @@
                                         dat.data[i].username,
                                         dat.data[i].tel_number,
                                         dat.data[i].location.floor,
-                                        'normal'
+                                        i
                                     );
                                 }
                             } else {
@@ -237,7 +261,7 @@
                                         dat.data[i].username,
                                         dat.data[i].tel_number,
                                         dat.data[i].location.floor,
-                                        'normal'
+                                        i
                                     );
                                 }
                             }

@@ -48,11 +48,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('userUpdate/{uid}','PageController@userUpdate'); //修改用户资料
     Route::get('userDetail/{uid}','PageController@userDetail'); //显示用户资料
     //地图
-    Route::any('normalMap','PageController@normalMap'); //普通地图
+    Route::any('normalMap','PageController@normalMap'); //普通地图331
+    Route::any('normalMapC7','PageController@normalMapC7'); //普通地图C7
     Route::any('poiMap','PageController@poiMap'); //兴趣点图
     Route::any('routeMap','PageController@routeMap'); //路网图
     Route::any('heatMap','PageController@heatMap'); //热力图
-    Route::any('userTrail/','PageController@userTrail');
+    Route::any('userTrail/','PageController@userTrail'); //331 历史轨迹
+    Route::any('userTrailC7/','PageController@userTrailC7'); //C7 历史轨迹
+    Route::any('userRtTrailC7/','PageController@userRtTrailC7'); //C7 实时轨迹
     //普通查询
     Route::any('nameSearch','PageController@nameSearch'); //名称查询
     Route::any('extentSearch','PageController@extentSearch'); //扩展查询

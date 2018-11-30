@@ -136,13 +136,43 @@ class PageController extends Controller
     }
 
     /**
-     * 普通图
+     * 普通图 331
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function normalMap()
     {
         return view('map.normalmap');
-//        return view('test.normalmap');
+    }
+    /**W
+     * 普通图 C7
+     */
+    public function normalMapC7()
+    {
+        return view('map.normalmapC7');
+    }
+    /**W
+     * 普通图 C7
+     */
+    public function userTrailC7()
+    {
+        $uid = rq('uid');
+        $startTime = rq('startTime');//"2018-10-22 11:36:07";//rq('startTime');
+        $endTime = rq('endTime');//"2018-10-22 11:38:19";//rq('endTime');
+        if ($startTime== '' or $endTime == ''){
+            return '输入时间段为空';
+        }
+        $userPositionList = Coo::where('uid' ,'=', $uid)->where('created_at', '>=', $startTime)->where('created_at', '<=', $endTime)->get();
+        if ($userPositionList->isEmpty()){
+            return '输入有误或该时间段内没有数据';
+        }
+        return view('map.userTrailC7',['userPositionLists' => $userPositionList]);
+    }
+    /**W
+     * 普通图 C7
+     */
+    public function userRtTrailC7()
+    {
+        return view('map.userRtTrailC7');
     }
 
     /**
