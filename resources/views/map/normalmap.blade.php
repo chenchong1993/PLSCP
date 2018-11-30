@@ -185,7 +185,7 @@
                     break;
             }
 
-            picSymbol = new PictureMarkerSymbol(img_uri,24,24);
+            picSymbol = new PictureMarkerSymbol(img_uri,POINTSIZE,POINTSIZE);
             //定义点的图片符号
             var attr = {"name": name, "phone": phone};
             //信息模板

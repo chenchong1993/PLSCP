@@ -34,7 +34,14 @@
         .map-col{position:absolute;left:10px;top:10px;z-index:0;width:1200px;height:800px;background-color:#f6f6f6}
     </style>
 </head>
-<body style="height: 100%; margin: 0">
+<style>
+    html, body, #map{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 {{--/*定义放大缩小按钮风格*/--}}
 <style>
     .menu-btn {
@@ -102,7 +109,7 @@
         /**
          * 定义三张地图，并设定必要参数
          */
-        map = new Map("map", {
+        var map = new Map("map", {
             center: new Point(538260.1180806961,4212780.513, new SpatialReference({ wkid: 4509})),
             logo:false
 

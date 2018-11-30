@@ -127,7 +127,6 @@ class PageController extends Controller
 
     /**
      * 兴趣点图
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function poiMap()
     {
@@ -136,22 +135,21 @@ class PageController extends Controller
     }
 
     /**
-     * 普通图 331
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 331用户实时位置地图
      */
     public function normalMap()
     {
         return view('map.normalmap');
     }
     /**W
-     * 普通图 C7
+     * C7用户实时位置地图
      */
     public function normalMapC7()
     {
         return view('map.normalmapC7');
     }
     /**W
-     * 普通图 C7
+     * C7历史轨迹
      */
     public function userTrailC7()
     {
@@ -168,7 +166,7 @@ class PageController extends Controller
         return view('map.userTrailC7',['userPositionLists' => $userPositionList]);
     }
     /**W
-     * 普通图 C7
+     * C7实时轨迹
      */
     public function userRtTrailC7()
     {
@@ -177,7 +175,6 @@ class PageController extends Controller
 
     /**
      * 路网图
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function routeMap()
     {
@@ -192,7 +189,7 @@ class PageController extends Controller
     }
 
     /**
-     * 人口分布热力图
+     * 石家庄桥西区人口分布热力图
      */
     public function peopleHeatMap()
     {
@@ -228,8 +225,7 @@ class PageController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * hdop
+     * hdop，pdop,vdop,rss
      */
     public function hdopHeatMap(){
         return view('heatmap.hdopHeatMap');
@@ -244,7 +240,7 @@ class PageController extends Controller
         return view('heatmap.rssHeatMap');
     }
     /**
-     * 历史轨迹图
+     * 331历史轨迹图
      */
     public function userTrail()
     {
@@ -272,7 +268,6 @@ class PageController extends Controller
 
     /**
      * 名称查询
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function nameSearch()
     {
@@ -281,7 +276,6 @@ class PageController extends Controller
 
     /**
      * 扩展查询
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function extentSearch()
     {
