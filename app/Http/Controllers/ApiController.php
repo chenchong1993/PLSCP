@@ -236,7 +236,11 @@ class ApiController extends Controller
             'lng' => 'required',
             'lat' => 'required',
             'floor' => 'required',
-            'orien' => ''
+            'orien' => '',
+            'location_method' => 'required'
+//            location_method = 0 指纹
+//            location_method = 1 混合
+//            location_method = 2 视觉
         ]);
 
         if ($validator->fails())
@@ -249,6 +253,7 @@ class ApiController extends Controller
         $lat = rq('lat');
         $floor = rq('floor');
         $orien = rq('orien');
+        $location_method = rq('location_method');
 
         $users =RtCoo::where('uid',$uid)->first();
         if ($users){
@@ -259,6 +264,7 @@ class ApiController extends Controller
             $users->lat = $lat;
             $users->floor = $floor;
             $users->orien = $orien;
+            $users->location_method = $location_method;
             $users->save();
 
     }
@@ -272,6 +278,7 @@ class ApiController extends Controller
             $users->lat = $lat;
             $users->floor = $floor;
             $users->orien = $orien;
+            $users->location_method = $location_method;
             $users->save();
 
         }
@@ -284,6 +291,7 @@ class ApiController extends Controller
         $userLocation->lat = $lat;
         $userLocation->floor = $floor;
         $userLocation->orien = $orien;
+        $users->location_method = $location_method;
         $userLocation->save();
         return suc();
     }

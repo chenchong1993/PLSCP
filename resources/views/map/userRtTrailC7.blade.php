@@ -107,15 +107,15 @@
         /**
          * 定义三张地图，并设定必要参数
          */
-        map = new Map("map", {
-            center: new Point(538260.1180806961,4212780.5132764, new SpatialReference({ wkid: 4509})),
+        var map = new Map("map", {
+            center: new Point(538264,4212780, new SpatialReference({ wkid: 4547})),
             logo:false
 
         });
         /**
          * 初始化楼层平面图
          */
-        var C7 = new ArcGISDynamicMapServiceLayer("http://121.28.103.199:5567/arcgis/rest/services/C7/C7/MapServer");
+        var C7 = new ArcGISDynamicMapServiceLayer("http://121.28.103.199:5567/arcgis/rest/services/C7/NewC7Map/MapServer");
         map.addLayer(C7);
         /**
          * 定义点图层

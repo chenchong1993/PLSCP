@@ -8,46 +8,61 @@
     <meta name="author" content="">
     <title>大众位置服务云平台</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('static/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="{{ asset('static/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('static/dist/css/sb-admin-2.css') }}" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="{{ asset('static/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    {{--HUI的图标库--}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('static/Hui-iconfont/1.0.8/iconfont.css') }}" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    {{--引入jquery--}}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- 提示框开始 -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/notify/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/notify/bootstrap.min.js"></script>
+    <script src="/js/notify/hullabaloo.js"></script>
+    <!-- 提示框结束 -->
+    <!-- 声音 -->
+    <script type="text/javascript" src="/js/jquery.notify.js"></script>
+    <!-- 声音 -->
+    {{--引入地图依赖的库--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/dijit/themes/tundra/tundra.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/esri/css/esri.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/Ips/css/widget.css') }}" />
     <script type="text/javascript" src="{{ asset('static/Ips_api_javascript/init.js') }}"></script>
-    <script src="{{ asset('static/vendor/jquery/jquery.min.js') }}"></script>
+
     {{--修改三张地图尺寸--}}
     <style type="text/css">
         /*.user-msg{position:absolute;left:810px;top:10px;z-index:auto;width:500px;background-color:#f6f6f6}*/
-        .map1-col{position:absolute;left:10px;top:10px;z-index:0;width:1200px;background-color:#f6f6f6}
-        .map2-col{position:absolute;left:10px;top:350px;z-index:1;width:1200px;background-color:#f6f6f6}
-        .map3-col{position:absolute;left:10px;top:740px;z-index:3;width:600px;background-color:#f6f6f6}
+        .map1-col{position:absolute;left:100px;top:10px;width:1200px;background-color:#f6f6f6}
+        .map2-col{position:absolute;left:100px;top:350px;width:1200px;background-color:#f6f6f6}
+        .map3-col{position:absolute;left:100px;top:740px;width:600px;background-color:#f6f6f6}
     </style>
+    {{--拖动框--}}
+    <link rel="stylesheet" type="text/css" href="/css/box.css">
+    <script type="text/javascript" src="js/box.js"></script>
+    {{--拖动框--}}
+    <!-- 提示框开始 -->
+    {{--<link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">--}}
+    {{--<link href="/css/notify/font-awesome.min.css" rel="stylesheet">--}}
+    {{--<script src="/js/notify/bootstrap.min.js"></script>--}}
+    {{--<script src="/js/notify/hullabaloo.js"></script>--}}
+    <!-- 提示框结束 -->
 </head>
 <body>
 <style>
     .menu-btn {
-        position: fixed;top:30px;left:1050px;font-size: 18px;
+        position: fixed;top:30px;left:10px;font-size: 18px;
     }
     #showIndex{
         top:70px;
     }
     #showC7{
         top:30px;
+    }
+    #showClean{
+        top:110px;
+    }
+    #showGetCoo{
+        top:150px;
+    }
+    #selectUsername{
+        top:190px;
     }
 </style>
 <style>
@@ -58,6 +73,20 @@
         height: 100%;
     }
 </style>
+
+{{--拖动框--}}
+<div class="box">
+    <div class="title">定位信息展示</div>
+    <div class="con">
+        <p>用户信息:<span id="user-msg"></span> </p>
+        <p>用户坐标:<span id="current-location"></span> </p>
+        <p>参考坐标:<span id="refer-location"></span> </p>
+        <p>定位偏差:<span id="offset-location"></span> </p>
+    </div>
+
+</div>
+{{--拖动框--}}
+
 <div class="row">
     <div class="map1-col">
         <div id="map1"></div>
@@ -65,8 +94,17 @@
     <div class="map2-col">
         <div id="map2"></div>
         <h2 class="menu-btn" style="left: 43%;font-size: 35px;color: #0c0c0c;top: 10px">331用户位置分布</h2>
-            <button class="menu-btn" id="showC7" onclick=showC7()>查看C7用户分布</button>
-        <button class="menu-btn" id="showIndex" onclick=showIndex()>返回首页</button>
+            <button class="menu-btn" id="showC7" onclick=showC7()>切换到C7</button>
+            <button class="menu-btn" id="showIndex" onclick=showIndex()>返回首页</button>
+            <button class="menu-btn" id="showClean">清除轨迹</button>
+            <button class="menu-btn" id="showGetCoo">获取坐标</button>
+            <select class="menu-btn" id="selectUsername" onchange="selectUsername()">
+                <option value="5">手机终端01</option>
+                <option value="6">手机终端02</option>
+                <option value="7">手机终端03</option>
+                <option value="8">手机终端04</option>
+                <option value="9">手机终端05</option>
+            </select>');
     </div>
     <div class="map3-col">
         <div id="map3"></div>
@@ -77,7 +115,37 @@
      * 定义全局变量
      **/
     var INTERVAL_TIME = 0.5; //数据刷新间隔时间
-    var POINTSIZE = 24;    //默认图片大小为24*24
+    var POINTSIZE = 18;    //默认图片大小为24*24
+    var HELLO_STR = "系统初始化成功！"; //初始化欢迎语句
+    var USER_ID = 5;//危险区域发送的信息
+
+    // 提示框初始化
+    $.hulla = new hullabaloo();
+    //初始化声音
+    $.notifySetup({sound: '/audio/notify.wav'});
+    /**
+     * [声音提醒和提示框显示]
+     * @param  {[type]} text [提示信息]
+     * @param  {[type]} type [提示类型]
+     * @return {[type]}      [description]
+     */
+    function notify(text, type) {
+        var level;
+        var index_str;
+        if (type == 'sys') {
+            index_str = "[ 系统消息 ]<br/>";
+            level = 'info';
+        } else if (type == 'tips') {
+            index_str = "[ 提示 ]<br/>";
+            level = 'info';
+        }
+
+        $('<div/>').notify();
+        setTimeout(function () {
+            $.hulla.send(index_str + text, level);
+        }, 100);
+    }
+
     /**
      * 跳转到用户轨迹页面
      * */
@@ -102,6 +170,24 @@
     function showIndex() {
         window.location.href = '/index';
     }
+
+    function selectUsername(){
+        var select = document.getElementById("selectUsername");
+        USER_ID = select.value
+        // alert(USER_ID);
+    }
+
+    /**
+     * 拖动框
+     */
+    $(document).ready(function () {
+        $(".box").bg_move({
+            move: '.title',
+            closed: '.close',
+            size: 6
+        });
+    });
+
     /**
      * 地图需求文件
      */
@@ -127,6 +213,8 @@
         "dojo/domReady!"
     ], function (Map, IpsMeasure,DynamicMapServiceLayer,FeatureLayer, GraphicsLayer, Graphic, Point, Polyline, Polygon, InfoTemplate, SimpleMarkerSymbol, SimpleLineSymbol,
                  SimpleFillSymbol, PictureMarkerSymbol, TextSymbol, Color, on, dom) {
+
+
         /**
          * 定义三张地图，并设定必要参数
          */
@@ -157,6 +245,28 @@
         var pointLayerF1 = new GraphicsLayer();
         var pointLayerF2 = new GraphicsLayer();
         var pointLayerF3= new GraphicsLayer();
+
+        /**
+         * 更新位置信息小部件
+         */
+        function updateLocationBox(username,curr_lng,curr_lat,refer_lng,refer_lat,floor,location_method){
+            if (location_method==0){location_method='指纹定位'}
+            if (location_method==1){location_method='混合定位'}
+            if (location_method==2){location_method='视觉定位'}
+            $('#user-msg').html(username+", "+floor+"楼, "+location_method);
+            $('#current-location').html("("+curr_lat+","+curr_lng+")");
+            $('#refer-location').html("("+refer_lat+","+refer_lng+")");
+            $('#offset-location').html("("+(curr_lat-refer_lat)/0.00001141+","+(curr_lng-refer_lng)/0.00000899+")m");
+        }
+
+
+
+        on(dom.byId("showClean"),"click",function(){
+            pointLayerF1.clear();
+            pointLayerF2.clear();
+            pointLayerF3.clear();
+        })
+
         /**
          * 添加点图标
          * */
@@ -223,20 +333,22 @@
                 function (dat, status) {
                     if (dat.status == 0) {
                         // 删除数据
-                        pointLayerF1.clear();
-                        pointLayerF2.clear();
-                        pointLayerF3.clear();
+                        // pointLayerF1.clear();
+                        // pointLayerF2.clear();
+                        // pointLayerF3.clear();
+                        //重绘
+                        pointLayerF1.redraw();
+                        pointLayerF2.redraw();
+                        pointLayerF3.redraw();
                         // 添加人
                         //注销掉因为先单用户测试
                         // for (var i in dat.data) {
                         console.log(dat);
                         for (var i=5; i<10; i++) {
-                            // console.log(dat.data[i]);
+                            console.log(dat.data[i].username);
                             if (dat.data[i].location.floor==3){
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34871))
                                 {
-                                    // console.log(dat.data[i].location.lng);
-                                    // console.log(dat.data[i].location.lat);
                                     addUserPoint(
                                         dat.data[i].id,
                                         dat.data[i].uid,
@@ -248,11 +360,10 @@
                                         i
                                     );
                                 }
-                            } else {
+                            }
+                            else {
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.349238))
                                 {
-                                    // console.log(dat.data[i].location.lng);
-                                    // console.log(dat.data[i].location.lat);
                                     addUserPoint(
                                         dat.data[i].id,
                                         dat.data[i].uid,
@@ -264,42 +375,25 @@
                                         i
                                     );
                                 }
+                                if ((38.24773539<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.24774129) &&(114.34871745<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34873097))
+                                {
+                                    notify("欢迎来到203&205房间", "tips");
+                                }
+                                if ((38.24773258<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.24773957) &&(114.34887475<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34889554))
+                                {
+                                    notify("欢迎来到207房间", "tips");
+                                }
                             }
-                            /**
-                             if (dat.data[i].location.floor == 1) {
-                                lineArrayF1.push([dat.data[i].location.lng,dat.data[i].location.lat]);
-                                var line= new Polyline(lineArrayF1);
-                                //定义线的符号
-                                var lineSymbol  = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new Color([0, 50, 250]), 3);
-                                var linegr=new Graphic(line,lineSymbol);
-                                lineLayerF1.add(linegr);
-                                map.addLayer(lineLayerF1);
-
-                            }
-                             if (dat.data[i].location.floor == 2) {
-
-                                lineArrayF2.push([dat.data[i].location.lng,dat.data[i].location.lat]);
-                                var line= new Polyline(lineArrayF2);
-                                //定义线的符号
-                                var lineSymbol  = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new Color([0, 50, 250]), 3);
-                                var linegr=new Graphic(line,lineSymbol);
-                                lineLayerF2.add(linegr);
-                                map.addLayer(lineLayerF2);
-
-                            }
-                             if (dat.data[i].location.floor == 3) {
-
-                                lineArrayF3.push([dat.data[i].location.lng,dat.data[i].location.lat]);
-                                var line= new Polyline(lineArrayF3);
-                                //定义线的符号
-                                var lineSymbol  = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new Color([0, 50, 250]), 3);
-                                var linegr=new Graphic(line,lineSymbol);
-                                lineLayerF3.add(linegr);
-                                map.addLayer(lineLayerF3);
-
-                            }
-                             **/
                         }
+                        updateLocationBox(
+                            dat.data[USER_ID].username,
+                            dat.data[USER_ID].location.lng,
+                            dat.data[USER_ID].location.lat,
+                            0,
+                            0,
+                            dat.data[USER_ID].location.floor,
+                            dat.data[USER_ID].location.location_method
+                        );
                     } else {
                         console.log('ajax error!');
                     }
@@ -309,7 +403,9 @@
         /**
          * 刷新频率
          */
-        setInterval(getDataAndRefresh, (INTERVAL_TIME * 1000))
+        setInterval(getDataAndRefresh, (INTERVAL_TIME * 1000));
+        //显示初始化成功
+        notify(HELLO_STR, "sys");
     });
 </script>
 
