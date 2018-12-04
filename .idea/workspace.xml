@@ -15,38 +15,39 @@
     <session id="1592877187">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="20" />
+          <entry key="project.closed" value="21" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.36" value="2" />
           <entry key="project.open.time.37" value="3" />
           <entry key="project.open.time.38" value="2" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.40" value="4" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.67" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="7" />
-          <entry key="html" value="4" />
+          <entry key="html" value="6" />
           <entry key="log" value="1" />
-          <entry key="php" value="3407" />
+          <entry key="php" value="4067" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="1963" />
+          <entry key="Blade" value="2623" />
           <entry key="CSS" value="8" />
-          <entry key="HTML" value="4" />
+          <entry key="HTML" value="6" />
           <entry key="PHP" value="1443" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -56,12 +57,12 @@
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="39" />
+          <entry key="Blade" value="40" />
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="4" />
+          <entry key="HTML" value="8" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="28" />
+          <entry key="PHP" value="29" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -76,11 +77,11 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="2" />
-          <entry key="html" value="4" />
+          <entry key="html" value="8" />
           <entry key="js" value="1" />
           <entry key="json" value="2" />
           <entry key="log" value="1" />
-          <entry key="php" value="67" />
+          <entry key="php" value="69" />
         </counts>
       </usages-collector>
     </session>
@@ -90,18 +91,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/map/normalmap.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="258" column="110" selection-start-line="258" selection-start-column="110" selection-end-line="258" selection-end-column="110" />
+            <state relative-caret-position="1556">
+              <caret line="96" column="85" lean-forward="true" selection-start-line="96" selection-start-column="85" selection-end-line="96" selection-end-column="85" />
               <folding>
-                <element signature="e#3491#3730#0#HTML" />
-                <element signature="e#3760#4007#0#HTML" />
-                <element signature="e#4030#4084#0#HTML" />
-                <element signature="e#4110#4158#0#HTML" />
-                <element signature="e#6272#6281#0#HTML" />
-                <element signature="e#9369#10379#0#HTML" />
-                <element signature="e#9588#10349#0#HTML" />
-                <element signature="e#10385#11396#0#HTML" />
+                <element signature="n#style#0;n#option#0;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#1;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#2;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#3;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#4;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4218">
+              <caret line="240" selection-start-line="240" selection-end-line="242" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/map/routemap.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1007">
+              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="55" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -109,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/push/one2one.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
+            <state relative-caret-position="1653">
               <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
             </state>
           </provider>
@@ -118,30 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/map-c7.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2718">
-              <caret line="381" column="42" selection-start-line="381" selection-start-column="42" selection-end-line="381" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#6742#6907#0#HTML" />
-                <element signature="e#6954#8137#0#HTML" />
-                <element signature="e#8143#8205#0#HTML" />
-                <element signature="e#8227#8637#0#HTML" />
-                <element signature="e#8644#8705#0#HTML" />
-                <element signature="e#8734#9076#0#HTML" />
-                <element signature="e#9121#10090#0#HTML" />
-                <element signature="e#11107#11142#0#HTML" />
-                <element signature="e#11922#12046#0#HTML" />
-                <element signature="e#12089#12494#0#HTML" />
-                <element signature="e#12506#12727#0#HTML" />
-                <element signature="e#12793#13106#0#HTML" />
-                <element signature="e#13116#13443#0#HTML" />
-                <element signature="e#13514#15302#0#HTML" />
-                <element signature="e#15312#15547#0#HTML" />
-                <element signature="e#15609#16423#0#HTML" />
-                <element signature="e#16434#16481#0#HTML" />
-                <element signature="e#16519#18693#0#HTML" />
-              </folding>
+            <state relative-caret-position="1349">
+              <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -150,10 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pushMsg</find>
-      <find>sendmsg</find>
-      <find>push_user_id</find>
-      <find>echartsExtent</find>
       <find>init</find>
       <find>esri</find>
       <find>Echarts3Layer</find>
@@ -180,6 +170,10 @@
       <find>notify</find>
       <find>notifySetup</find>
       <find>HELLO_STR</find>
+      <find>substring</find>
+      <find>console</find>
+      <find>menu-btn</find>
+      <find>selectUsername</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,6 +208,7 @@
         <option value="$PROJECT_DIR$/public/css/box.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
         <option value="$USER_HOME$/Desktop/map-c7.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/map/ClickMapPoint.html" />
         <option value="$PROJECT_DIR$/resources/views/map/normalmap.blade.php" />
       </list>
     </option>
@@ -322,9 +317,9 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="y" value="103" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="101" />
+    <option name="y" value="63" />
     <option name="width" value="1026" />
     <option name="height" value="546" />
   </component>
@@ -344,6 +339,19 @@
               <item name="PLSCP" type="b2602c69:ProjectViewProjectNode" />
               <item name="PLSCP" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PLSCP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PLSCP" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PLSCP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PLSCP" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PLSCP" type="b2602c69:ProjectViewProjectNode" />
@@ -383,12 +391,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="apiGetAllUserNewLocationList&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/routes/web.php&#10;web&#9;null&#9;null&#10;W&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/routes/web.php&#10;Api&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/app/Http/Controllers/ApiController.php&#10;Pa&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/app/Http/Controllers/PageController.php&#10;app.&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/config/app.php" />
+    <property name="SearchEverywhereHistoryKey" value="menu-btn&#9;null&#9;null&#10;apiGetAllUserNewLocationList&#9;null&#9;null&#10;we&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/routes/web.php&#10;web&#9;null&#9;null&#10;W&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/routes/web.php&#10;Api&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/app/Http/Controllers/ApiController.php&#10;Pa&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/app/Http/Controllers/PageController.php&#10;app.&#9;FILE&#9;file://E:/xampp/htdocs/PLSCP/config/app.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\PLSCP\resources\views\map" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\xampp\htdocs\PLSCP\public\js" />
       <recent name="E:\xampp\htdocs\PLSCP\public\css" />
@@ -437,17 +448,19 @@
       <workItem from="1543506524571" duration="381000" />
       <workItem from="1543540220470" duration="14185000" />
       <workItem from="1543804887659" duration="23665000" />
+      <workItem from="1543888067610" duration="11083000" />
+      <workItem from="1543910118288" duration="3271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119569000" />
+    <option name="totallyTimeSpent" value="133923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22390318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -674,77 +687,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/map/routemap.blade.php">
+    <entry file="file://$USER_HOME$/Desktop/ClickMapPoint1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="40" column="40" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="40" />
+        <state relative-caret-position="361">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/硕士/研二/室内定位/大众位置服务终端云端/Ips_api/Sample Code/ClickMapPoint.html">
+    <entry file="file://$PROJECT_DIR$/resources/views/map/ClickMapPoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1236">
-          <caret line="244" selection-start-line="244" selection-end-line="244" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/map-c7.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2718">
-          <caret line="381" column="42" selection-start-line="381" selection-start-column="42" selection-end-line="381" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6742#6907#0#HTML" />
-            <element signature="e#6954#8137#0#HTML" />
-            <element signature="e#8143#8205#0#HTML" />
-            <element signature="e#8227#8637#0#HTML" />
-            <element signature="e#8644#8705#0#HTML" />
-            <element signature="e#8734#9076#0#HTML" />
-            <element signature="e#9121#10090#0#HTML" />
-            <element signature="e#11107#11142#0#HTML" />
-            <element signature="e#11922#12046#0#HTML" />
-            <element signature="e#12089#12494#0#HTML" />
-            <element signature="e#12506#12727#0#HTML" />
-            <element signature="e#12793#13106#0#HTML" />
-            <element signature="e#13116#13443#0#HTML" />
-            <element signature="e#13514#15302#0#HTML" />
-            <element signature="e#15312#15547#0#HTML" />
-            <element signature="e#15609#16423#0#HTML" />
-            <element signature="e#16434#16481#0#HTML" />
-            <element signature="e#16519#18693#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/push/one2one.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+        <state relative-caret-position="100">
+          <caret line="4" column="57" lean-forward="true" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/map/normalmap.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="258" column="110" selection-start-line="258" selection-start-column="110" selection-end-line="258" selection-end-column="110" />
+        <state relative-caret-position="1556">
+          <caret line="96" column="85" lean-forward="true" selection-start-line="96" selection-start-column="85" selection-end-line="96" selection-end-column="85" />
           <folding>
-            <element signature="e#3491#3730#0#HTML" />
-            <element signature="e#3760#4007#0#HTML" />
-            <element signature="e#4030#4084#0#HTML" />
-            <element signature="e#4110#4158#0#HTML" />
-            <element signature="e#6272#6281#0#HTML" />
-            <element signature="e#9369#10379#0#HTML" />
-            <element signature="e#9588#10349#0#HTML" />
-            <element signature="e#10385#11396#0#HTML" />
+            <element signature="n#style#0;n#option#0;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#1;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#2;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#3;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#4;n#select#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4218">
+          <caret line="240" selection-start-line="240" selection-end-line="242" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/map/routemap.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/push/one2one.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/map-c7.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1349">
+          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
         </state>
       </provider>
     </entry>

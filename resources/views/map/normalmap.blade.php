@@ -8,41 +8,40 @@
     <meta name="author" content="">
     <title>大众位置服务云平台</title>
 
-    {{--引入jquery--}}
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    {{--引入CSS部分--}}
+
     <!-- 提示框开始 -->
     <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/notify/font-awesome.min.css" rel="stylesheet">
-    <script src="/js/notify/bootstrap.min.js"></script>
-    <script src="/js/notify/hullabaloo.js"></script>
-    <!-- 提示框结束 -->
-    <!-- 声音 -->
-    <script type="text/javascript" src="/js/jquery.notify.js"></script>
-    <!-- 声音 -->
+
     {{--引入地图依赖的库--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/dijit/themes/tundra/tundra.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/esri/css/esri.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('static/Ips_api_javascript/Ips/css/widget.css') }}" />
-    <script type="text/javascript" src="{{ asset('static/Ips_api_javascript/init.js') }}"></script>
-
+    {{--拖动框--}}
+    <link rel="stylesheet" type="text/css" href="/css/box.css">
     {{--修改三张地图尺寸--}}
     <style type="text/css">
         /*.user-msg{position:absolute;left:810px;top:10px;z-index:auto;width:500px;background-color:#f6f6f6}*/
-        .map1-col{position:absolute;left:100px;top:10px;width:1200px;background-color:#f6f6f6}
-        .map2-col{position:absolute;left:100px;top:350px;width:1200px;background-color:#f6f6f6}
-        .map3-col{position:absolute;left:100px;top:740px;width:600px;background-color:#f6f6f6}
+        .map1-col{position:absolute;left:120px;top:0px;width:1200px;background-color:#f6f6f6}
+        .map2-col{position:absolute;left:120px;top:400px;width:1200px;background-color:#f6f6f6}
+        .map3-col{position:absolute;left:120px;top:800px;width:600px;background-color:#f6f6f6}
     </style>
+
+
+    {{--引入JS部分--}}
+    {{--引入jquery--}}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    {{--提示框--}}
+    <script src="/js/notify/bootstrap.min.js"></script>
+    <script src="/js/notify/hullabaloo.js"></script>
+    <!-- 声音 -->
+    <script type="text/javascript" src="/js/jquery.notify.js"></script>
+    {{--地图--}}
+    <script type="text/javascript" src="{{ asset('static/Ips_api_javascript/init.js') }}"></script>
     {{--拖动框--}}
-    <link rel="stylesheet" type="text/css" href="/css/box.css">
     <script type="text/javascript" src="js/box.js"></script>
-    {{--拖动框--}}
-    <!-- 提示框开始 -->
-    {{--<link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">--}}
-    {{--<link href="/css/notify/font-awesome.min.css" rel="stylesheet">--}}
-    {{--<script src="/js/notify/bootstrap.min.js"></script>--}}
-    {{--<script src="/js/notify/hullabaloo.js"></script>--}}
-    <!-- 提示框结束 -->
 </head>
 <body>
 <style>
@@ -99,25 +98,28 @@
             <button class="menu-btn" id="showClean">清除轨迹</button>
             <button class="menu-btn" id="showGetCoo">获取坐标</button>
             <select class="menu-btn" id="selectUsername" onchange="selectUsername()">
-                <option value="5">手机终端01</option>
-                <option value="6">手机终端02</option>
-                <option value="7">手机终端03</option>
-                <option value="8">手机终端04</option>
-                <option value="9">手机终端05</option>
-            </select>');
+                <option value="5" style="color:#0aa908">手机终端01</option>
+                <option value="6" style="color:#00aaf6">手机终端02</option>
+                <option value="7" style="color:rgba(178,0,74,0.86)">手机终端03</option>
+                <option value="8" style="color:rgba(10,0,127,0.86)">手机终端04</option>
+                <option value="9" style="color:#d90a07">手机终端05</option>
+            </select>
     </div>
     <div class="map3-col">
         <div id="map3"></div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
     /**
      * 定义全局变量
      **/
-    var INTERVAL_TIME = 0.5; //数据刷新间隔时间
+    var INTERVAL_TIME = 1; //数据刷新间隔时间
     var POINTSIZE = 18;    //默认图片大小为24*24
     var HELLO_STR = "系统初始化成功！"; //初始化欢迎语句
-    var USER_ID = 5;//危险区域发送的信息
+    var USER_ID = 5;//用户序号
+    var POINTLAT = 38.0;
+    var POINTLNG = 114.0;
+
 
     // 提示框初始化
     $.hulla = new hullabaloo();
@@ -150,14 +152,14 @@
      * 跳转到用户轨迹页面
      * */
     function catUserTrail(uid) {
-        console.log("2:",uid+" ");
+        // console.log("2:",uid+" ");
         var startTime = $('#startTime').val();
         var endTime = $('#endTime').val();
         window.location.href = '/userTrail?uid=' + uid + '&startTime=' + startTime +'&endTime=' + endTime;
     }
     function exportFlie(uid) {
 
-        console.log("2:",uid+" ");
+        // console.log("2:",uid+" ");
         var startTime = $('#startTime').val();
         var endTime = $('#endTime').val();
 
@@ -193,6 +195,7 @@
      */
     require([
         "Ips/map",
+        "esri/geometry/Extent",
         "Ips/widget/IpsMeasure",
         "Ips/layers/DynamicMapServiceLayer",
         "Ips/layers/FeatureLayer",
@@ -211,24 +214,39 @@
         "dojo/on",
         "dojo/dom",
         "dojo/domReady!"
-    ], function (Map, IpsMeasure,DynamicMapServiceLayer,FeatureLayer, GraphicsLayer, Graphic, Point, Polyline, Polygon, InfoTemplate, SimpleMarkerSymbol, SimpleLineSymbol,
+    ], function (Map, Extent,IpsMeasure,DynamicMapServiceLayer,FeatureLayer, GraphicsLayer, Graphic, Point, Polyline, Polygon, InfoTemplate, SimpleMarkerSymbol, SimpleLineSymbol,
                  SimpleFillSymbol, PictureMarkerSymbol, TextSymbol, Color, on, dom) {
 
-
+        var initialExtent = new Extent({
+            "xmin": 114.348488, "ymin": 114.348832,
+            "xmax": 114.349324, "ymax": 114.348865,
+            "spatialReference": { "wkid": 4326 }
+        });
+        var initialExtentf3 = new Extent({
+            "xmin": 114.348488, "ymin": 114.348832,
+            "xmax": 114.3487591, "ymax": 114.348865,
+            "spatialReference": { "wkid": 4326 }
+        });
         /**
          * 定义三张地图，并设定必要参数
          */
         var map1 = new Map("map1", {
             logo:false,
+            zoom:21,
+            extent:initialExtent,
             center: [114.3489254,38.24772],
         });
         var map2 = new Map("map2", {
             logo:false,
-            center: [114.3489254,38.24777],
+            zoom:21,
+            extent:initialExtent,
+            center: [114.3489254,38.24772],
         });
         var map3 = new Map("map3", {
             logo:false,
-            center: [114.3486414,38.247770],
+            zoom:21,
+            extent:initialExtentf3,
+            center: [114.3486414,38.247735],
         });
         /**
          * 初始化楼层平面图
@@ -236,9 +254,15 @@
         var f1 = new DynamicMapServiceLayer("http://121.28.103.199:5567/arcgis/rest/services/331/floorone/MapServer");
         var f2 = new DynamicMapServiceLayer("http://121.28.103.199:5567/arcgis/rest/services/331/floortwo/MapServer");
         var f3 = new DynamicMapServiceLayer("http://121.28.103.199:5567/arcgis/rest/services/331/floorthree/MapServer");
+        var grid1 = new FeatureLayer("http://121.28.103.199:5567/arcgis/rest/services/331/grid/MapServer/0");
+        var grid2 = new FeatureLayer("http://121.28.103.199:5567/arcgis/rest/services/331/grid/MapServer/0");
+        var grid3 = new FeatureLayer("http://121.28.103.199:5567/arcgis/rest/services/331/grid/MapServer/0");
         map1.addLayer(f1);
         map2.addLayer(f2);
         map3.addLayer(f3);
+        map1.addLayer(grid1);
+        map2.addLayer(grid2);
+        map3.addLayer(grid3);
         /**
          * 定义点图层
          */
@@ -253,18 +277,57 @@
             if (location_method==0){location_method='指纹定位'}
             if (location_method==1){location_method='混合定位'}
             if (location_method==2){location_method='视觉定位'}
+            var currlat = (curr_lat+ "").substring(0,11);
+            var currlng = (curr_lng+ "").substring(0,12);
+            var referlat = (refer_lat+ "").substring(0,11);
+            var referlng = (refer_lng+ "").substring(0,12);
+            var d_lat = (((curr_lat-refer_lat)*111319.4907)+ "");
+            var d_lng = (((curr_lng-refer_lng)*111319.4907)+ "");
+            var index_lat=d_lat.lastIndexOf(".");
+            var index_lng=d_lng.lastIndexOf(".");
+            d_lat = d_lat.substring(0,index_lat+4);
+            d_lng = d_lng.substring(0,index_lng+4);
             $('#user-msg').html(username+", "+floor+"楼, "+location_method);
-            $('#current-location').html("("+curr_lat+","+curr_lng+")");
-            $('#refer-location').html("("+refer_lat+","+refer_lng+")");
-            $('#offset-location').html("("+(curr_lat-refer_lat)/0.00001141+","+(curr_lng-refer_lng)/0.00000899+")m");
+            $('#current-location').html("("+currlat+","+currlng+")");
+            $('#refer-location').html("("+referlat+","+referlng+")");
+            $('#offset-location').html("("+d_lat+","+d_lng+")m");
         }
-
-
 
         on(dom.byId("showClean"),"click",function(){
             pointLayerF1.clear();
             pointLayerF2.clear();
             pointLayerF3.clear();
+        })
+
+
+        on(dom.byId("showGetCoo"),"click",function () {
+            var click1,click2,click3;
+            click1= on(map1,"click",function (evt) {
+                var point=evt.mapPoint;
+                POINTLAT = point.y;
+                POINTLNG = point.x;
+                console.log(point);
+                click1.remove();
+                click2.remove();
+                click3.remove();
+            });
+            click2= on(map2,"click",function (evt) {
+                var point=evt.mapPoint;
+                POINTLAT = point.y;
+                POINTLNG = point.x;
+                click1.remove();
+                click2.remove();
+                click3.remove();
+            });
+            click3= on(map3,"click",function (evt) {
+                var point=evt.mapPoint;
+                POINTLAT = point.y;
+                POINTLNG = point.x;;
+                click1.remove();
+                click2.remove();
+                click3.remove();
+            })
+
         })
 
         /**
@@ -282,10 +345,10 @@
                     img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker0.png') }}";
                     break;
                 case 6:
-                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker1.png') }}";
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker5.png') }}";
                     break;
                 case 7:
-                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker2.png') }}";
+                    img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker8.png') }}";
                     break;
                 case 8:
                     img_uri = "{{ asset('static/Ips_api_javascript/Ips/image/marker3.png') }}";
@@ -343,9 +406,9 @@
                         // 添加人
                         //注销掉因为先单用户测试
                         // for (var i in dat.data) {
-                        console.log(dat);
+                        // console.log(dat);
                         for (var i=5; i<10; i++) {
-                            console.log(dat.data[i].username);
+                            // console.log(dat.data[i].username);
                             if (dat.data[i].location.floor==3){
                                 if ((38.24766<dat.data[i].location.lat)&&(dat.data[i].location.lat<38.2478) &&(114.3485<dat.data[i].location.lng)&&(dat.data[i].location.lng<114.34871))
                                 {
@@ -389,8 +452,8 @@
                             dat.data[USER_ID].username,
                             dat.data[USER_ID].location.lng,
                             dat.data[USER_ID].location.lat,
-                            0,
-                            0,
+                            POINTLNG,
+                            POINTLAT,
                             dat.data[USER_ID].location.floor,
                             dat.data[USER_ID].location.location_method
                         );
